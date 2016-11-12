@@ -17,13 +17,12 @@ public class main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         
-        for (int i = 0; i < 10; i++) {
             Gui gui = new Gui();
-            Thread.sleep(1000L);
-            gui.dispose();
-        }
+        
+           
+        
      
     
     }
