@@ -5,7 +5,10 @@
  */
 package com.mycompany.financeapp.GUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.util.List;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 /**
@@ -22,47 +26,34 @@ import javax.swing.JTextField;
 class Gui extends JFrame {
     
     private static final long serialVersionUID = 1L;
+    private JTabbedPane tabbedPane = new JTabbedPane();
     private JPanel pan;
     private JButton addStock;
     private JTextField stockField = new JTextField(5);
     private List<String> stocks = new ArrayList<>();
     
     public Gui(){
-        
     setVisible(true);
     setSize(new Dimension(500,500));
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
     setResizable(false);
     
+    
     initComponents();
     
    
     }
     private void initComponents(){
-    pan = new Panel();
+    pan = new JPanel();
+    
+    tabbedPane.addTab("graph", new GraphPanel());
+    tabbedPane.addTab("home", new HomeScreen());
+    tabbedPane.add("trading", new TradePanel());
+    add(tabbedPane);
+    pan.setBackground(new Color(5,3,1));
     stockField.setText("");
     
-    
-    initButtons();
-    
-    add(pan);
-    pan.add(addStock);
-    pan.add(stockField);
-    
-    
-    }
-    private void initButtons(){
-    addStock = new JButton("add");
-    addStock.addActionListener((ActionEvent e) -> {
-        
-        if (!stockField.getText().equals("")) {
-           stocks.add(stockField.getText()); 
-        }
-        System.out.println(stocks.get(stocks.size()-1));
-        stockField.setText("");
-        
-    });
     
     }
     

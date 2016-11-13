@@ -5,14 +5,24 @@
  */
 package com.mycompany.financeapp.GUI;
 
-import javax.swing.JPanel;
+
+import java.awt.*;
+import java.util.Random;
+import javax.swing.*;
 
 /**
  *
  * @author Joshua
  */
-public class Panel extends JPanel{
+class TradePanel extends JPanel {
     
     private static final long serialVersionUID = 1L;
+    private Random rand = new Random();
+    
+    public TradePanel() {
+    super();
+    this.setLayout(new GridLayout());
+    this.setBackground(new Color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()));
+    }
     
 }
