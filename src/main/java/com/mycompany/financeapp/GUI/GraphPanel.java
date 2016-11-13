@@ -61,7 +61,7 @@ public class GraphPanel extends JPanel{
             g.drawLine(x1, y1, x2, y2);
             
             
-            System.out.println(x1 + " " + x2 + " " + y1 + " " + y2);
+            //System.out.println(x1 + " " + x2 + " " + y1 + " " + y2);
         }
     
     }

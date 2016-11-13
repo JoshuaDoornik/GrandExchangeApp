@@ -28,9 +28,8 @@ class Gui extends JFrame {
     private static final long serialVersionUID = 1L;
     private JTabbedPane tabbedPane = new JTabbedPane();
     private JPanel pan;
-    private JButton addStock;
-    private JTextField stockField = new JTextField(5);
-    private List<String> stocks = new ArrayList<>();
+    private final JTextField stockField = new JTextField(5);
+  
     
     public Gui(){
     setVisible(true);
@@ -46,13 +45,12 @@ class Gui extends JFrame {
     }
     private void initComponents(){
     pan = new JPanel();
-    
-    tabbedPane.addTab("graph", new GraphPanel());
     tabbedPane.addTab("home", new HomeScreen());
+    tabbedPane.addTab("graph", new GraphPanel());
     tabbedPane.add("trading", new TradePanel());
     add(tabbedPane);
     pan.setBackground(new Color(5,3,1));
-    stockField.setText("");
+   
     
     
     }

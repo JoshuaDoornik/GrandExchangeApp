@@ -16,7 +16,7 @@ import yahoofinance.YahooFinance;
  */
 public class CurrentStocks {
 
-    private List<Stock> allStocks = new ArrayList<>();
+    
     private Map<String,Stock> stockMap = new HashMap<>();
     
     private CurrentStocks() {
@@ -45,7 +45,6 @@ public class CurrentStocks {
         stockMap.put(name, stock);
     }
     public Stock getStock(String name){
-        
         
         return stockMap.get(name);
     }
