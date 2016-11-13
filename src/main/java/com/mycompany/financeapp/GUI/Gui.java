@@ -46,8 +46,9 @@ class Gui extends JFrame {
     }
     private void initComponents(){
     pan = new JPanel();
+    
     tabbedPane.addTab("graph", new GraphPanel());
-    tabbedPane.add("home", new HomeScreen());
+    tabbedPane.addTab("home", new HomeScreen());
     tabbedPane.add("trading", new TradePanel());
     add(tabbedPane);
     pan.setBackground(new Color(5,3,1));

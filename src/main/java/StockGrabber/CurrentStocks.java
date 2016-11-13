@@ -5,23 +5,35 @@
  */
 package StockGrabber;
 
-/**
- *
- * @author Joshua
- */
 import java.io.IOException;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
-public class grabLogic {
-  
-   
+/**
+ *
+ * @author Joshua
+ */
+public class CurrentStocks {
+
+    private List<Stock> allStocks = new ArrayList<>();
     
+    private CurrentStocks() {
+    }
     
-    public Stock getStock(String name){
-        Stock stock = null;
+    public static CurrentStocks getInstance() {
+        return CurrentStocksHolder.INSTANCE;
+    }
+    
+    private static class CurrentStocksHolder {
+
+        private static final CurrentStocks INSTANCE = new CurrentStocks();
+        
+    }
+    public void addStock(String name){
+      Stock stock = null;
     
         try {
             stock = YahooFinance.get(name);
@@ -31,8 +43,11 @@ public class grabLogic {
         if (stock == null) {
             System.out.println("could not grab stock");
         }
-
-        return stock;
+        allStocks.add(stock);
     }
-            
+    public Stock getStock(String name){
+    
+    
+        return null;
+    }
 }
