@@ -21,36 +21,48 @@ public class HomeScreen extends JPanel {
     private Random rand = new Random();
     private JButton button = new JButton("voeg een stock toe");
     private JTextField text = new JTextField(3);
-   // private JList<String> stocknames = new JList<>();
-    private CurrentStocks stocks;
+    private CurrentStocks stocks = CurrentStocks.getInstance();
+    private DefaultListModel<String> model = new DefaultListModel<>();
+    private JList<String> list = new JList<>(model);
+    private int i;
     
     public HomeScreen(){
     super();
     this.setBackground(new Color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()));
     initComponents();
+    initButtons();
     }
     
-    public void initComponents(){
-    text.setText("");
+    private void initButtons(){
+    
+    
     button.addActionListener((ActionEvent e) -> {
     String stockname = null;
+    
         if (text.getText() != "") {
             stocks.addStock(text.getText());
             stockname = stocks.getStock(text.getText()).getName();
+            text.setText("");
         }
         if (stockname != null) {
-       //     stocknames.add(stockname);
+            System.out.println(stockname);
+           model.add(i++, stockname);
         }
         
-        
-    
+
     });
     
-    add(button);
-    add(text);
     
     
     
+    
+    }
+
+    private void initComponents() {
+     text.setText("");
+     add(button);
+     add(text);
+     add(list);
     }
     
 }
