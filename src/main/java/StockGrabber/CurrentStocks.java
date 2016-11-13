@@ -44,8 +44,8 @@ public class CurrentStocks {
         allStocks.add(stock);
     }
     public Stock getStock(String name){
-    
-    
+   
+        
         return null;
     }
 }

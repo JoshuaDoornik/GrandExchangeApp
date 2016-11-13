@@ -46,18 +46,18 @@ public class GraphPanel extends JPanel{
             
       
        
-       data[i] = rand.nextInt(100);
+       data[i] = rand.nextInt(10);
        
        }
     int upperboundScale = (this.getHeight()-10) / linearSearch(data);
-    int sideScale = (this.getWidth()) /data.length; 
+    int sideScale = (this.getWidth()) / data.length; 
    
         for (int i = 1; i < data.length; i++) {
             
             int x1 = sideScale*(i-1)+10;
             int x2 = sideScale*i+10;
-            int y1 = data[i-1]*upperboundScale - 10;
-            int y2 = data[i]*upperboundScale - 10;
+            int y1 = data[i-1]*upperboundScale;
+            int y2 = data[i]*upperboundScale;
             g.drawLine(x1, y1, x2, y2);
             
             
