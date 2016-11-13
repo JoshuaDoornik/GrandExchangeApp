@@ -7,8 +7,6 @@ package StockGrabber;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -38,7 +36,7 @@ public class CurrentStocks {
         try {
             stock = YahooFinance.get(name);
         } catch (IOException ex) {
-            Logger.getLogger(grabLogic.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
         if (stock == null) {
             System.out.println("could not grab stock");
