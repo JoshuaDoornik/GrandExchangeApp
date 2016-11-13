@@ -17,6 +17,7 @@ import yahoofinance.YahooFinance;
 public class CurrentStocks {
 
     private List<Stock> allStocks = new ArrayList<>();
+    private Map<String,Stock> stockMap = new HashMap<>();
     
     private CurrentStocks() {
     }
@@ -41,11 +42,11 @@ public class CurrentStocks {
         if (stock == null) {
             System.out.println("could not grab stock");
         }
-        allStocks.add(stock);
+        stockMap.put(name, stock);
     }
     public Stock getStock(String name){
-   
         
-        return null;
+        
+        return stockMap.get(name);
     }
 }
