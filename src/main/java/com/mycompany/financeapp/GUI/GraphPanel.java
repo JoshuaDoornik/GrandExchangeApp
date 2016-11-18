@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 import javax.swing.JPanel;
-import org.jgraph.JGraph;
+
 
 
 /**
@@ -17,7 +17,7 @@ import org.jgraph.JGraph;
  * @author Joshua
  */
 public class GraphPanel extends JPanel{
-    JGraph graph;
+
     private Random rand = new Random(); 
     private static final long serialVersionUID = 1L;
     
@@ -40,7 +40,12 @@ public class GraphPanel extends JPanel{
     private void drawData(Graphics g){
     g.setColor(Color.RED);
    
-    int [] data = new int[]{0,1,2,3,4,5,6,7,8,9,10,0,1,2,3,4,5,6,7,8,9,10};
+    int [] data = new int[rand.nextInt(100)];
+    
+    
+        for (int i = 0; i < data.length; i++) {
+            data[i] = rand.nextInt(100000);
+        }
     
     double max = linearSearch(data);
     int sideScale = (this.getWidth()) / data.length; 
@@ -48,7 +53,7 @@ public class GraphPanel extends JPanel{
         for (int i = 1; i < data.length; i++) {
             
             int x1 = sideScale*(i-1)+10;
-            int x2 = sideScale*i+10;
+            int x2 = (sideScale*i)+10;
             
             double y1 = ((data[i-1] / max)*100)*4.25;
             double y2 = ((data[i] / max)*100)*4.25;
@@ -61,6 +66,7 @@ public class GraphPanel extends JPanel{
         }
     
     }
+    
         private int linearSearch(int[] toSearch){
         int biggest = 0;
             for (int i = 0; i < toSearch.length; i++) {
