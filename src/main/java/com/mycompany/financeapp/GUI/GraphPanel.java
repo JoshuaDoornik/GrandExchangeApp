@@ -7,15 +7,17 @@ package com.mycompany.financeapp.GUI;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.math.BigDecimal;
 import java.util.Random;
 import javax.swing.JPanel;
+import org.jgraph.JGraph;
+
 
 /**
  *
  * @author Joshua
  */
 public class GraphPanel extends JPanel{
+    JGraph graph;
     private Random rand = new Random(); 
     private static final long serialVersionUID = 1L;
     
@@ -38,30 +40,24 @@ public class GraphPanel extends JPanel{
     private void drawData(Graphics g){
     g.setColor(Color.RED);
    
-    int [] data = new int[10];
+    int [] data = new int[]{0,1,2,3,4,5,6,7,8,9,10,0,1,2,3,4,5,6,7,8,9,10};
     
-   
-    
-        for (int i = 0; i < 10; i++) {
-            
-      
-       
-       data[i] = rand.nextInt(10);
-       
-       }
-    int upperboundScale = (this.getHeight()-10) / linearSearch(data);
+    double max = linearSearch(data);
     int sideScale = (this.getWidth()) / data.length; 
    
         for (int i = 1; i < data.length; i++) {
             
             int x1 = sideScale*(i-1)+10;
             int x2 = sideScale*i+10;
-            int y1 = data[i-1]*upperboundScale;
-            int y2 = data[i]*upperboundScale;
-            g.drawLine(x1, y1, x2, y2);
+            
+            double y1 = ((data[i-1] / max)*100)*4.25;
+            double y2 = ((data[i] / max)*100)*4.25;
+            y1 +=10;
+            y2 +=10;
+            g.drawLine(x1, (int)y1, x2, (int)y2);
             
             
-            //System.out.println(x1 + " " + x2 + " " + y1 + " " + y2);
+            System.out.println(y1 + " " + y2);
         }
     
     }
@@ -73,7 +69,7 @@ public class GraphPanel extends JPanel{
                     biggest = toSearch[i];
                 }
             }
-            System.out.println(biggest);
+            
         return biggest;
         }
 }
